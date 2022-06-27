@@ -232,7 +232,7 @@ class ProxmoxSnapAnsible(ProxmoxAnsible):
                 # Not checking now would allow to remove the configuration BUT
                 # fail later, leaving the container in a misconfigured state.
                 if not (
-                    self.user_is_root_pam and (
+                    self.module.params['api_user'] == 'root@pam' and (
                         # Either via API and password,
                         self.module.params['api_password'] or
                         # or directly via local backend.
